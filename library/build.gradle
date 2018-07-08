@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
@@ -28,11 +27,6 @@ android {
     }
 }
 
-configurations.all {
-    // check for updates every build
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-}
-
 dependencies {
     implementation deps.kotlin.stdlib
 
@@ -41,6 +35,8 @@ dependencies {
     implementation deps.support.cardview
     implementation deps.support.design
     implementation deps.constraint_layout
+
+    implementation deps.ktx.runtime
 
     implementation deps.lifecycle.runtime
     implementation deps.lifecycle.extensions
@@ -71,52 +67,4 @@ dependencies {
     testImplementation deps.junit
 }
 
-install {
-    repositories.mavenInstaller {
-        pom {
-            project {
-                groupId = 'com.morrisware.android'
-                artifactId 'basic'
-                version = '1.0.0-SNAPSHOT'
-                packaging 'aar'
-
-                name 'basic'
-                description 'basic'
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'MorrisWare'
-                        name 'MorrisWare'
-                        email 'MorrisWare01@gmail.com'
-                    }
-                }
-//                scm {
-//                    connection gitUrl
-//                    developerConnection gitUrl
-//                    url siteUrl
-//                }
-            }
-        }
-    }
-}
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-//task javadoc(type: Javadoc) {
-//    source = android.sourceSets.main.java.srcDirs
-//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//}
-//task javadocJar(type: Jar, dependsOn: javadoc) {
-//    classifier = 'javadoc'
-//    from javadoc.destinationDir
-//}
-artifacts {
-//    archives javadocJar
-    archives sourcesJar
-}
+apply from: rootProject.file('maven-upload.gradle')

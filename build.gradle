@@ -7,7 +7,6 @@ buildscript {
     }
     dependencies {
         classpath deps.plugin.android_gradle
-        classpath deps.plugin.android_maven_gradle
         classpath deps.kotlin.plugin
         classpath deps.kotlin.allopen
         classpath deps.navigation.safe_args_plugin
