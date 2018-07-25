@@ -30,6 +30,7 @@ android {
 dependencies {
     implementation deps.kotlin.stdlib
 
+    implementation deps.support.multidex
     implementation deps.support.app_compat
     implementation deps.support.recyclerview
     implementation deps.support.cardview
@@ -52,6 +53,9 @@ dependencies {
     implementation deps.retrofit.gson
     implementation deps.retrofit.rxjava2
     implementation deps.okhttp_logging_interceptor
+
+    implementation deps.rx.rxjava2
+    implementation deps.rx.rxandroid
 
     implementation deps.glide.runtime
     kapt deps.glide.compiler
