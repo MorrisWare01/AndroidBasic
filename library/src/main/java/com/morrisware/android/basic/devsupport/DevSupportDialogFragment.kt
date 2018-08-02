@@ -1,4 +1,4 @@
-package com.morrisware.android.basic.developer
+package com.morrisware.android.basic.devsupport
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -9,24 +9,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.morrisware.android.basic.R
-import com.morrisware.android.basic.databinding.DeveloperDialogFragmentBinding
+import com.morrisware.android.basic.databinding.DevSupportDialogFragmentBinding
 import com.morrisware.android.basic.delegate.autoCleared
 import com.morrisware.android.basic.ktx.restartApp
+
 
 /**
  * Created by MorrisWare on 2018/8/2.
  * Email: MorrisWare01@gmail.com
  */
-class DeveloperDialogFragment : DialogFragment() {
+class DevSupportDialogFragment : DialogFragment() {
 
-    private var binding by autoCleared<DeveloperDialogFragmentBinding>()
+    private var binding by autoCleared<DevSupportDialogFragmentBinding>()
 
-    lateinit var developerViewModel: DeveloperViewModel
+    lateinit var devSupportViewModel: DevSupportViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.developer_dialog_fragment,
+            R.layout.dev_support_dialog_fragment,
             container,
             false
         )
@@ -35,15 +36,15 @@ class DeveloperDialogFragment : DialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        developerViewModel = ViewModelProviders.of(this)
-            .get(DeveloperViewModel::class.java)
-        binding.viewModel = developerViewModel
+        devSupportViewModel = ViewModelProviders.of(this)
+            .get(DevSupportViewModel::class.java)
+        binding.viewModel = devSupportViewModel
         binding.setLifecycleOwner(this)
 
-        developerViewModel.dismissLiveData.observe(this, Observer {
+        devSupportViewModel.dismissLiveData.observe(this, Observer {
             dismiss()
         })
-        developerViewModel.restartAppLiveData.observe(this, Observer {
+        devSupportViewModel.restartAppLiveData.observe(this, Observer {
             activity?.application?.restartApp()
         })
     }

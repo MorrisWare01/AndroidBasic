@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.morrisware.android.basic.developer.DeveloperViewModel" />
+            type="com.morrisware.android.basic.devsupport.DevSupportViewModel" />
 
     </data>
 
@@ -27,7 +27,7 @@
                 android:layout_weight="1"
                 android:hint="@string/developer_api_url"
                 android:inputType="text"
-                android:text="@{viewModel.apiUrl}" />
+                android:text="@{viewModel.apiUrlLiveData}" />
 
             <Button
                 android:id="@+id/btn_api"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
-                android:onClick="@{() -> viewModel.saveApiUrl(viewModel.apiUrl)}"
+                android:onClick="@{() -> viewModel.saveApiUrl(viewModel.apiUrlLiveData)}"
                 android:text="@string/developer_save" />
 
         </LinearLayout>

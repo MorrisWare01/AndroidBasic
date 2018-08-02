@@ -1,4 +1,4 @@
-package com.morrisware.android.basic.developer
+package com.morrisware.android.basic.devsupport
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
@@ -13,7 +13,7 @@ import com.google.gson.Gson
  * Created by MorrisWare on 2018/8/2.
  * Email: MorrisWare01@gmail.com
  */
-class DeveloperViewModel(
+class DevSupportViewModel(
     application: Application,
     defaultUrl: String
 ) : AndroidViewModel(application) {
@@ -25,14 +25,14 @@ class DeveloperViewModel(
     private val sharedPreferences: SharedPreferences = getApplication<Application>()
         .getSharedPreferences("developer", Context.MODE_PRIVATE)
     private val gson: Gson = Gson()
-    private val developerSetting: DeveloperSetting
+    private val devSupportSetting: DevSupportSetting
 
     init {
-        developerSetting = gson.fromJson<DeveloperSetting>(
-            sharedPreferences.getString(DeveloperSetting.DEVELOPER_KEY, "{}"),
-            DeveloperSetting::class.java)
-        if (developerSetting.apiUrl.isNullOrBlank()) {
-            developerSetting.apiUrl = defaultUrl
+        devSupportSetting = gson.fromJson<DevSupportSetting>(
+            sharedPreferences.getString(DevSupportSetting.KEY, "{}"),
+            DevSupportSetting::class.java)
+        if (devSupportSetting.apiUrl.isNullOrBlank()) {
+            devSupportSetting.apiUrl = defaultUrl
         }
     }
 
@@ -42,9 +42,9 @@ class DeveloperViewModel(
             return
         }
 
-        developerSetting.apiUrl = apiUrl
+        devSupportSetting.apiUrl = apiUrl
         sharedPreferences.edit {
-            this.putString(DeveloperSetting.DEVELOPER_KEY, gson.toJson(developerSetting))
+            this.putString(DevSupportSetting.KEY, gson.toJson(devSupportSetting))
             this.apply()
         }
         getApplication<Application>().toast("保存成功")

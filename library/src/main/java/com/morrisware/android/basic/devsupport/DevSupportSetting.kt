@@ -1,13 +1,13 @@
-package com.morrisware.android.basic.developer
+package com.morrisware.android.basic.devsupport
 
 /**
  * Created by MorrisWare on 2018/8/2.
  * Email: MorrisWare01@gmail.com
  */
-data class DeveloperSetting(
+data class DevSupportSetting(
     var apiUrl: String?
 ) {
     companion object {
-        const val DEVELOPER_KEY = "developer_key"
+        const val KEY = "dev_support_setting_key"
     }
 }
