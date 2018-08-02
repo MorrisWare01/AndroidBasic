@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">library</string>
     <string name="crash_error_msg">很抱歉,程序出现异常,即将退出.</string>
+    <string name="developer_api_url">API地址</string>
+    <string name="developer_save">保存</string>
+    <string name="developer_restart_app">应用重启</string>
+    <string name="developer_dismiss">关闭</string>
 </resources>

@@ -49,6 +49,9 @@ dependencies {
 
     implementation deps.navigation.fragment_ktx
 
+    implementation deps.rx.rxjava2
+    implementation deps.rx.rxandroid
+
     implementation deps.retrofit.runtime
     implementation deps.retrofit.gson
     implementation deps.retrofit.rxjava2
