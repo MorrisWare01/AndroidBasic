@@ -18,16 +18,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <EditText
                 android:id="@+id/et_api"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/developer_api_url"
+                android:hint="@string/dev_support_api_url"
                 android:inputType="text"
-                android:text="@{viewModel.apiUrlLiveData}" />
+                android:text="@={viewModel.apiUrlLiveData}" />
 
             <Button
                 android:id="@+id/btn_api"
@@ -36,7 +36,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:onClick="@{() -> viewModel.saveApiUrl(viewModel.apiUrlLiveData)}"
-                android:text="@string/developer_save" />
+                android:text="@string/dev_support_save" />
 
         </LinearLayout>
 
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> viewModel.restartApp()}"
-                android:text="@string/developer_restart_app" />
+                android:text="@string/dev_support_restart_app" />
 
             <Button
                 android:id="@+id/btn_close"
@@ -59,7 +59,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
                 android:onClick="@{() -> viewModel.dismiss()}"
-                android:text="@string/developer_dismiss" />
+                android:text="@string/dev_support_dismiss" />
         </LinearLayout>
 
     </LinearLayout>

@@ -8,22 +8,20 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import androidx.core.widget.toast
 import com.google.gson.Gson
+import com.morrisware.android.basic.R
 
 /**
  * Created by MorrisWare on 2018/8/2.
  * Email: MorrisWare01@gmail.com
  */
-class DevSupportViewModel(
-    application: Application,
-    defaultUrl: String
-) : AndroidViewModel(application) {
+class DevSupportViewModel(application: Application) : AndroidViewModel(application) {
 
     val apiUrlLiveData = MutableLiveData<String>()
     val restartAppLiveData = MutableLiveData<Boolean>()
     val dismissLiveData = MutableLiveData<Boolean>()
 
     private val sharedPreferences: SharedPreferences = getApplication<Application>()
-        .getSharedPreferences("developer", Context.MODE_PRIVATE)
+        .getSharedPreferences("devSupport", Context.MODE_PRIVATE)
     private val gson: Gson = Gson()
     private val devSupportSetting: DevSupportSetting
 
@@ -31,14 +29,14 @@ class DevSupportViewModel(
         devSupportSetting = gson.fromJson<DevSupportSetting>(
             sharedPreferences.getString(DevSupportSetting.KEY, "{}"),
             DevSupportSetting::class.java)
-        if (devSupportSetting.apiUrl.isNullOrBlank()) {
-            devSupportSetting.apiUrl = defaultUrl
+        if (!devSupportSetting.apiUrl.isNullOrBlank()) {
+            apiUrlLiveData.value = devSupportSetting.apiUrl
         }
     }
 
-    fun saveApiUrl(apiUrl: String) {
-        if (apiUrl.isBlank()) {
-            getApplication<Application>().toast("Api地址不能为空")
+    fun saveApiUrl(apiUrl: String?) {
+        if (apiUrl.isNullOrBlank()) {
+            getApplication<Application>().toast(getApplication<Application>().getText(R.string.dev_support_api_url_empty))
             return
         }
 
@@ -47,7 +45,7 @@ class DevSupportViewModel(
             this.putString(DevSupportSetting.KEY, gson.toJson(devSupportSetting))
             this.apply()
         }
-        getApplication<Application>().toast("保存成功")
+        getApplication<Application>().toast(getApplication<Application>().getText(R.string.dev_support_save_success))
     }
 
     fun restartApp() {
@@ -57,6 +55,5 @@ class DevSupportViewModel(
     fun dismiss() {
         dismissLiveData.value = true
     }
-
 
 }
