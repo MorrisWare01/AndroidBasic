@@ -29,50 +29,50 @@ android {
 }
 
 dependencies {
-    implementation deps.kotlin.stdlib
+    api deps.kotlin.stdlib
 
-    implementation deps.support.multidex
-    implementation deps.support.app_compat
-    implementation deps.support.recyclerview
-    implementation deps.support.cardview
-    implementation deps.support.design
-    implementation deps.constraint_layout
+    api deps.support.multidex
+    api deps.support.app_compat
+    api deps.support.recyclerview
+    api deps.support.cardview
+    api deps.support.design
+    api deps.constraint_layout
 
-    implementation deps.ktx.runtime
+    api deps.ktx.runtime
 
-    implementation deps.lifecycle.runtime
-    implementation deps.lifecycle.extensions
-    implementation deps.lifecycle.java8
+    api deps.lifecycle.runtime
+    api deps.lifecycle.extensions
+    api deps.lifecycle.java8
     kapt deps.lifecycle.compiler
 
-    implementation deps.room.runtime
+    api deps.room.runtime
     kapt deps.room.compiler
 
-    implementation deps.navigation.fragment_ktx
+    api deps.navigation.fragment_ktx
 
-    implementation deps.rx.rxjava2
-    implementation deps.rx.rxandroid
+    api deps.rx.rxjava2
+    api deps.rx.rxandroid
 
-    implementation deps.retrofit.runtime
-    implementation deps.retrofit.gson
-    implementation deps.retrofit.rxjava2
-    implementation deps.okhttp_logging_interceptor
+    api deps.retrofit.runtime
+    api deps.retrofit.gson
+    api deps.retrofit.rxjava2
+    api deps.okhttp_logging_interceptor
 
-    implementation deps.rx.rxjava2
-    implementation deps.rx.rxandroid
+    api deps.rx.rxjava2
+    api deps.rx.rxandroid
 
-    implementation deps.glide.runtime
+    api deps.glide.runtime
     kapt deps.glide.compiler
 
-    implementation deps.dagger.runtime
-    implementation deps.dagger.android
-    implementation deps.dagger.android_support
+    api deps.dagger.runtime
+    api deps.dagger.android
+    api deps.dagger.android_support
     kapt deps.dagger.android_support_compiler
     kapt deps.dagger.compiler
 
-    implementation deps.timber
+    api deps.timber
 
-    testImplementation deps.junit
+    testApi deps.junit
 }
 
 apply from: rootProject.file('maven-upload.gradle')

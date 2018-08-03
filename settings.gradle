@@ -1,3 +1,3 @@
 rootProject.name = 'baisc'
 
-include ':library'
+include ':library', ':app'

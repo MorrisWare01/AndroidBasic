@@ -2,6 +2,7 @@ package com.morrisware.android.basic.devsupport
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -29,20 +30,22 @@ class DevSupportDialogFragment : DialogFragment() {
     lateinit var devSupportViewModel: DevSupportViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.default_dialog_style)
-        dialog.window.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.dev_support_dialog_fragment,
             container,
             false
         )
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
         val displayMetrics = DisplayMetrics()
         dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window.windowManager.defaultDisplay.getMetrics(displayMetrics)
         dialog.window.setLayout((displayMetrics.widthPixels * 0.9f).toInt(),
             (displayMetrics.heightPixels * 0.9f).toInt())
-        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
