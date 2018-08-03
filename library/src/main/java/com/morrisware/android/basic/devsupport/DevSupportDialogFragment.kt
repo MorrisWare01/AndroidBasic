@@ -11,6 +11,7 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import com.morrisware.android.basic.R
 import com.morrisware.android.basic.databinding.DevSupportDialogFragmentBinding
 import com.morrisware.android.basic.delegate.autoCleared
@@ -28,6 +29,8 @@ class DevSupportDialogFragment : DialogFragment() {
     lateinit var devSupportViewModel: DevSupportViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.default_dialog_style)
+        dialog.window.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.dev_support_dialog_fragment,

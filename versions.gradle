@@ -173,9 +173,9 @@ deps.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
 ext.deps = deps
 
 def addRepos(RepositoryHandler handler) {
+    handler.maven { url "http://118.25.24.168:8888/repository/maven-public/" }
     handler.google()
     handler.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    handler.maven { url "http://118.25.24.168:8888/repository/maven-public/" }
     handler.maven { url "https://jitpack.io" }
     handler.jcenter()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
