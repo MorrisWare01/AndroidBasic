@@ -16,19 +16,15 @@ import com.morrisware.android.basic.R
  */
 class DevSupportViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val devSupportRepository: DevSupportRepository = DevSupportRepository(application)
+    private val devSupportSetting: DevSupportSetting
+
     val apiUrlLiveData = MutableLiveData<String>()
     val restartAppLiveData = MutableLiveData<Boolean>()
     val dismissLiveData = MutableLiveData<Boolean>()
 
-    private val sharedPreferences: SharedPreferences = getApplication<Application>()
-        .getSharedPreferences("devSupport", Context.MODE_PRIVATE)
-    private val gson: Gson = Gson()
-    private val devSupportSetting: DevSupportSetting
-
     init {
-        devSupportSetting = gson.fromJson<DevSupportSetting>(
-            sharedPreferences.getString(DevSupportSetting.KEY, "{}"),
-            DevSupportSetting::class.java)
+        devSupportSetting = devSupportRepository.getDevSupportSetting()
         if (!devSupportSetting.apiUrl.isNullOrBlank()) {
             apiUrlLiveData.value = devSupportSetting.apiUrl
         }
@@ -40,11 +36,7 @@ class DevSupportViewModel(application: Application) : AndroidViewModel(applicati
             return
         }
 
-        devSupportSetting.apiUrl = apiUrl
-        sharedPreferences.edit {
-            this.putString(DevSupportSetting.KEY, gson.toJson(devSupportSetting))
-            this.apply()
-        }
+        devSupportRepository.setDevSupportSetting(DevSupportSetting(apiUrl))
         getApplication<Application>().toast(getApplication<Application>().getText(R.string.dev_support_save_success))
     }
 
