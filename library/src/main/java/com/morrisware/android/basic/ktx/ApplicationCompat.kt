@@ -9,6 +9,7 @@ import android.content.Intent
  */
 fun Application.restartApp() {
     val intent: Intent = this.packageManager.getLaunchIntentForPackage(this.packageName)
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     startActivity(intent);
+    android.os.Process.killProcess(android.os.Process.myPid())
 }

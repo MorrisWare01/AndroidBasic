@@ -72,7 +72,7 @@ dependencies {
 
     api deps.timber
 
-    testApi deps.junit
+    testImplementation deps.junit
 }
 
 apply from: rootProject.file('maven-upload.gradle')
