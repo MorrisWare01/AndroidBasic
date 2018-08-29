@@ -3,7 +3,6 @@ package com.morrisware.android.basic.devsupport
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.core.content.edit
 import com.google.gson.Gson
 
 class DevSupportRepository constructor(application: Application) {
@@ -16,8 +15,8 @@ class DevSupportRepository constructor(application: Application) {
             DevSupportSetting.KEY, "{}"), DevSupportSetting::class.java)
     }
 
-    fun setDevSupportSetting(devSupportSetting: DevSupportSetting){
-        sharedPreferences.edit {
+    fun setDevSupportSetting(devSupportSetting: DevSupportSetting) {
+        sharedPreferences.edit().apply {
             this.putString(DevSupportSetting.KEY, gson.toJson(devSupportSetting))
             this.apply()
         }

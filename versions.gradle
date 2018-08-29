@@ -20,9 +20,9 @@
  **/
 
 def build_versions = [:]
-build_versions.min_sdk = 14
-build_versions.target_sdk = 27
-build_versions.build_tools = "27.0.3"
+build_versions.min_sdk = 19
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.0"
 ext.build_versions = build_versions
 
 def versions = [:]
@@ -31,9 +31,9 @@ versions.kotlin = "1.2.51"
 versions.arch_core = "1.1.1"
 versions.room = "1.1.1"
 versions.lifecycle = "1.1.1"
-versions.support = "27.1.1"
+versions.support = "28.0.0-rc01"
 versions.multidex = "1.0.2"
-versions.ktx="0.3"
+versions.ktx="1.0.0-alpha3"
 versions.dagger = "2.15"
 versions.junit = "4.12"
 versions.espresso = "3.0.1"
@@ -174,8 +174,8 @@ ext.deps = deps
 
 def addRepos(RepositoryHandler handler) {
     handler.google()
-    handler.maven { url "http://118.25.24.168:8888/repository/maven-public/" }
     handler.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    handler.maven { url "http://118.25.24.168:8888/repository/maven-public/" }
     handler.jcenter()
     handler.maven { url "https://jitpack.io" }
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }

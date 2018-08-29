@@ -38,8 +38,6 @@ dependencies {
     api deps.support.design
     api deps.constraint_layout
 
-    api deps.ktx.runtime
-
     api deps.lifecycle.runtime
     api deps.lifecycle.extensions
     api deps.lifecycle.java8

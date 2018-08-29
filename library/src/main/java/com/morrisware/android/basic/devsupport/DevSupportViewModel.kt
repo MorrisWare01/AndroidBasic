@@ -3,12 +3,8 @@ package com.morrisware.android.basic.devsupport
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
-import android.content.Context
-import android.content.SharedPreferences
-import androidx.core.content.edit
-import androidx.core.widget.toast
-import com.google.gson.Gson
 import com.morrisware.android.basic.R
+import com.morrisware.android.basic.ktx.toast
 
 /**
  * Created by MorrisWare on 2018/8/2.
