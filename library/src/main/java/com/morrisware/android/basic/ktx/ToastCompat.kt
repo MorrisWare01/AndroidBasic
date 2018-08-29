@@ -10,9 +10,17 @@ import android.widget.Toast
 fun Context.toast(
     text: CharSequence,
     duration: Int = Toast.LENGTH_SHORT
-): android.widget.Toast = Toast.makeText(this, text, duration)
+): android.widget.Toast {
+    val toast = Toast.makeText(this.applicationContext, text, duration)
+    toast.show()
+    return toast
+}
 
 fun Context.toast(
     resId: Int,
     duration: Int = Toast.LENGTH_SHORT
-): android.widget.Toast = Toast.makeText(this, resId, duration)
+): android.widget.Toast {
+    val toast = Toast.makeText(this.applicationContext, resId, duration)
+    toast.show()
+    return toast
+}
