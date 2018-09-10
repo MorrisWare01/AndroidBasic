@@ -1,4 +1,4 @@
-package com.mumuwu.paradise.ktx
+package com.morrisware.android.basic.ktx
 
 import android.support.v4.util.ArrayMap
 import java.io.UnsupportedEncodingException

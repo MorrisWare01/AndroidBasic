@@ -1,4 +1,4 @@
-package com.mumuwu.paradise.ktx
+package com.morrisware.android.basic.ktx
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
