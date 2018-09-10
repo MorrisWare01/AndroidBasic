@@ -1,4 +1,4 @@
-package com.morrisware.android.basic.ktx
+package com.mumuwu.paradise.ktx
 
 import android.support.v4.util.ArrayMap
 import java.io.UnsupportedEncodingException
@@ -17,7 +17,7 @@ fun String?.isPassword(): Boolean = this?.let {
 } ?: false
 
 // 验证是不是验证码
-fun String?.isValidCode(): Boolean = this?.let { this.matches("^\\d{4,6}$".toRegex()) } ?: false
+fun String?.isCaptcha(): Boolean = this?.let { this.matches("^\\d{4,6}$".toRegex()) } ?: false
 
 fun String?.isUrl(): Boolean = this?.let {
     this.matches(("^(((file|gopher|news|nntp|telnet|http|ftp|https|ftps|sftp)://)|" +
@@ -51,3 +51,10 @@ fun String?.parseURLGetParams(): Map<String, String> = this?.let { it ->
     }
     map
 } ?: ArrayMap<String, String>()
+
+/**
+ * 获取后缀
+ */
+fun String?.getExtension(): String = this?.let { it ->
+    it.substring(it.lastIndexOf(".", it.length))
+} ?: ""

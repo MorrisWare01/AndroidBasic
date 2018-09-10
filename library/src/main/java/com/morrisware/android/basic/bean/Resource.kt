@@ -35,6 +35,8 @@ data class Resource<T>(
                 return this.throwable.message
             } else if (this.throwable is BusinessException) {
                 return this.throwable.message
+            } else if (this.throwable is CancelException) {
+                return this.throwable.message
             } else {
                 return "error"
             }
